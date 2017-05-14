@@ -1,6 +1,7 @@
 Project by: Joey Button, Robert Bracken, Hanna Nowicki, Jack Desmarias, Mohamed Houtti, Andrew Hwang, Marisa Dreher, David Cromwell, Max White
 
 Initial ReadMe Below
+
 ------------------------------------------------------------------------
 
 This is the ReadMe for Developers of NUbeRC
@@ -31,4 +32,4 @@ Download Mongodb and start the app on your computer:
 
 
 Once Mongodb is started, go look at http://localhost:3000/userlist
-All the developers should already be in the database, and are currently displayed here. Go look at NUbeRC/views/userlist.jade to see where this is generated. Using jade will be super helpful for us to construct our front end, auto generating html for us.
+All the developers should already be in the database, and are currently displayed here. Go look at NUbeRC/views/userlist.jade to see where this is generated.

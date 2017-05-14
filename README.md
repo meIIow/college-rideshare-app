@@ -1,5 +1,9 @@
-This is the ReadMe for Developers of NUbeRC
+Project by: Joey Button, Robert Bracken, Hanna Nowicki, Jack Desmarias, Mohamed Houtti, Andrew Hwang, Marisa Dreher, David Cromwell, Max White
 
+Initial ReadMe Below
+------------------------------------------------------------------------
+
+This is the ReadMe for Developers of NUbeRC
 
 Currently, to run locally navigate to desired location then:
 

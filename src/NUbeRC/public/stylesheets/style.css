@@ -1,0 +1,315 @@
+
+html {
+  background-image: url('curved-road2.jpg');
+  background-size: cover ;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /*background-position: center;*/
+
+
+}
+
+body {
+   background-color: transparent;
+
+}
+
+.bigTitle{
+  margin:auto;
+
+}
+#bigPapa{
+  margin:0 10%;
+}
+
+
+
+.panel > .panel-heading {
+    background-image: none;
+    background-color: white;
+    border-style:none;
+
+
+}
+.panel > .panel-heading > .panel-title{
+  background-color: white;
+
+}
+
+.panel > .panel-heading > .panel-title> .panel-body{
+  background-color: white;
+
+}
+
+.panel > .panel-heading > .panel-title> .panel-body{
+  background-color: white;
+
+}
+
+.panel > .panel-body{
+  background-color: white;
+
+
+
+}
+.panel.boxerA{
+  border-style: solid;
+}
+
+
+#loginform{
+  color:#696969;
+  background:#fff;
+  padding: 50px;
+	max-width: 40%;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:5%;
+  border-style:none;
+  border-width: medium;
+  min-width: 250px;
+
+	boprder-radius: 10px;
+	box-sizing: border-box;
+
+}
+
+#loginform > section{
+  max-width: 278px;
+	margin: 0 auto;
+
+}
+
+
+#loginform > section div.textbox{
+  margin: 30px 0 0 0;
+}
+#loginform > section div.tbox2{
+  margin: 10px 0 0 0;
+}
+
+#loginform > section div.loginbuttons{
+  margin: 10px 0 0 0;
+}
+
+#logo{
+
+  margin:auto;
+  -webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+	outline: none;
+
+
+}
+
+#titleRides{
+  margin:0 10%;
+}
+
+#panelBody{
+  margin:0% 4%;
+
+
+/*
+  margin-left: 7%;
+  margin-right: auto;*/
+
+}
+#partPanel{
+  margin-right:10px;
+}
+
+#jumboTitle{
+  font-size: 320%;
+  font-family: 'Open Sans', sans-serif;
+}
+#jumbo1{
+  	margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 1%;
+    margin-bottom: 3%;
+}
+
+
+h1 {
+        font-size: 50px;
+        color: #464646;
+}
+
+#searchRide{
+  background-color: #000;
+
+}
+
+#first{
+  min-width: 250px;
+}
+
+h2.verified{
+	text-align: center;
+	color:707070;
+
+}
+
+h2.welcome{
+	text-align: center;
+	color:#707070;
+}
+
+
+#divSearch{
+  width: auto;
+}
+
+.listA{
+	padding: 0% 10%;
+  font-size: 15px;
+  font-family: 'Open Sans', sans-serif;
+  background-color: inherit;
+}
+
+.listB{
+	padding: 0% 10%;
+  font-size: 15px;
+  font-family: 'Open Sans', sans-serif;
+  background-color: inherit;
+  border-style:solid;
+  border-width: 1px;
+}
+
+#bid_button{
+
+}
+#navRides{
+
+  margin: auto;
+  background-color: silver;
+
+
+
+
+}
+
+.nav-tabs > li.active > #mrides,
+     .nav-tabs > li.active > #mrides:hover,
+     .nav-tabs > li.active > #mrides:focus {
+       color: #555555;
+       cursor: default;
+       background-color: #ffffff;
+       border: 1px solid #dddddd;
+       border-bottom-color: transparent;
+}
+
+
+#mrides:link{
+  color:black;
+
+
+}
+
+
+.nav-tabs {
+    margin: 0;
+    padding: 0;
+    border: 2px;
+
+}
+
+
+#mrides:hover{
+  color:black;
+}
+
+.nav-tabs{
+  color:red;
+}
+
+#mrides{
+
+  font-size: 200%;
+}
+
+.div1{
+	width: 129px;
+	margin: 0 auto;
+}
+
+#login_div{
+
+
+}
+
+.rideTitle{
+
+}
+
+#login{
+	padding: 14px 24px;
+	border: 2px solid #0099cc;
+	letter-spacing:1px;
+	text-transform: uppercase;
+	color:#0099cc;
+	background: #ffffff;
+
+
+}
+
+
+#signup{
+	padding: 14px 24px;
+	border: 2px solid #0099cc;
+	letter-spacing:1px;
+	text-transform: uppercase;
+	color:#0099cc;
+	background: #ffffff;
+
+  overflow: hidden;
+  white-space: nowrap;
+  display: block;
+  text-overflow: ellipsis;
+}
+
+
+.hidden{
+	display: none;
+
+}
+
+.dynamicHeader{
+  display: inline;
+}
+#tripList{
+	list-style-type: none;
+}
+.tripList2{
+	list-style-type: disc;
+	font-size: small;
+}
+.boxed{
+	outline-color: #d3d3d3;
+}
+#bidderList{
+	list-style-type: none;
+}
+.lefty{
+	float: left;
+	display:inline;
+	list-style-type: none;
+}
+.leftie{
+	float: left;
+	display:inline;
+}
+.righty{
+	float: right;
+	display:inline;
+}
+
+.glyphicon:before {
+  margin-right: 5px;
+}
+
+.glyphicon.glyphicon-road:before {
+  margin-right: 8px;
+}

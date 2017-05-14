@@ -1,0 +1,140 @@
+extends layout
+
+block content
+  div(class="container")
+
+      meta(charset='utf-8')
+      title Profile
+      //link(rel='stylesheet', href='//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css')
+      //script(src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js")
+      //script(src='//code.jquery.com/jquery-1.10.2.js')
+      //script(src='//code.jquery.com/ui/1.11.4/jquery-ui.js')
+      //script(src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.3/backbone-min.js")
+
+      script(type='text/javascript').
+        function isNumberKey(evt){
+          var charCode = (evt.which) ? evt.which : event.keyCode
+          if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+
+          return true;
+        }
+
+      script(type='text/javascript').
+        var userData =!{JSON.stringify(user)}
+      script(src="/javascripts/profile.js")
+
+      div.div1
+        #editModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='postRideLabel')
+          .modal-dialog(role='document')
+            .modal-content
+              .modal-header
+                button.close(type='button', data-dismiss='modal', aria-label='Close')
+                  span(aria-hidden='true') ×
+
+                p.dynamicHeader#username Edit Profile
+
+              .modal-body
+                form.form-inline(class="form-horizontal")
+                  panel.panel-info
+                    .panel-heading
+                      h3.panel-title(id = "userInfo") User Information
+                    .panel-body
+                      div(class="pull-left", style="float:left;")
+                        .control-group
+                          label.control-label(for='usernameField') Username
+                          .controls
+                            input#usernameField(type="text", data-trigger="manual", data-toggle='popover', data-content="Invalid username.")
+                        .control-group
+                          label.control-label(for='phoneNumber') Phone Number
+                          .controls
+                            |(
+                            input#phoneNumber1(for='phoneNumber1', type="text", maxLength=3, style="width:28px", onkeypress="return isNumberKey(event)")
+                            |) 
+                            input#phoneNumber2(type="text", maxLength=3, style="width:28px", onkeypress="return isNumberKey(event)")
+                            |  - 
+                            input#phoneNumber3(type="text", maxLength=4, style="width:37px", onkeypress="return isNumberKey(event)", data-trigger="manual", data-toggle='popover', data-content="Invalid phone number.")
+                      span(class="pull-right", style="float:left;")
+                        button#changeUserInfo.btn.btn-primary(type='button', style="float:top;") Submit Changes
+
+                  panel.panel-info
+                      .panel-heading
+                        h3.panel-title(id = "passwordChange") Password
+                      .panel-body
+                        div(class="pull-left",style="float:left;")
+                          .control-group
+                            label.control-label(for='oldPassword') Old Password:
+                            .controls
+                              input#oldPassword(type="password")
+                          .control-group
+                            label.control-label(for='newPassword') New Password:
+                            .controls
+                              input#newPassword(type="password")
+                          .control-group
+                            label.control-label(for='verPassword') Verify New Password:
+                            .controls
+                              input#verifyNewPassword(type="password")
+                        span(class="pull-right",style="float:left;")
+                          button#changePasswordButton.btn.btn-primary(type='button') Change Password
+
+                  panel.panel-info
+                      .panel-heading
+                        h3.panel-title(id = "uploadPicture") Picture
+                      .panel-body
+                          div(class="pull-left",style="float:left;")
+                            .control-group
+                              label.control-label(for='inputPrice') Change User Picture?
+                            
+                              form(id="pic_upload",enctype="multipart/form-data",action="/uploadPhoto",method="POST",name="photo")
+                                input#newPicture(type='file',name="photo",accept="application/x-zip-compressed,image/*")
+                                //input#submitPic(type='submit',value="photo",name="photo")
+                          span(class="pull-right",style="float:right;")
+                            button.btn.btn-primary(id="uploadPictureButton",type='button',value="Upload Image",name="photo") Upload
+
+
+              .modal-footer
+                button.btn.btn-default(type='button', data-dismiss='modal') Close
+
+
+
+      div.div2
+          .panel.panel-info
+            .panel-heading
+              h3.panel-title(id = "panelTitle")
+            .panel-body
+              .row
+                .col-md-3.col-lg-3(align='center', style= "float: left; max-width: 40%")
+                  img.img-circle.img-responsive(alt='User Pic', id = "profilePicture",)
+                .col-md-9.col-lg-9
+                  table.table.table-user-information()
+                    tbody
+                      tr
+                        td
+                          i.glyphicon.glyphicon-user
+                          h  User Name:
+                        td(id="profileName")
+                      tr
+                        td
+                          i.glyphicon.glyphicon-envelope
+                          h  Email:
+                        td(id="profileEmail")
+                      tr
+                        td
+                          i.glyphicon.glyphicon-road
+                          h  Driver Rating:
+                        td
+                          h Cleanliness:
+                          h(id="profileRating1")
+                          br
+                          h Punctuality:
+                          h(id="profileRating2")
+                      tr
+                        td
+                          i.glyphicon.glyphicon-earphone
+                          h  Phone Number:
+                        td(id="profilePhone")
+                  button.btn.btn-primary.btn-lg(type='button', data-toggle='modal', data-target='#editModal', id='editButton')
+                     | Edit Profile
+                   // Modal
+
+            .panel-footer

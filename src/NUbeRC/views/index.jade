@@ -1,0 +1,26 @@
+extends loginLayout
+
+
+
+block content
+
+	title Login
+	div(class="container", id="first")
+		script(src="/javascripts/main.js")
+		div(class="container login-form" id="login_div")
+			form(id='loginform' class="form-signin" style=)
+				section
+
+					img#logo.img-responsive(src='/stylesheets/icon.jpg', alt='')
+					div.textbox
+
+						label(for="inputEmail" class="sr-only") Email Address
+						input(type="email",id='inputEmail', class="form-control", placeholder='Email',required, autofocus,data-trigger="manual", data-toggle='popover', data-content="you must use an email ending in .edu")
+					div.tbox2
+						label(for="inputPassword" class="sr-only") Password
+						input(type="password", id='inputPassword', class="form-control", placeholder='Password', require, autofocus, data-trigger="manual", data-toggle='popover', data-content="your password is too short")
+					div.loginbuttons
+						button(id='login', class="btn btn-lg btn-primary btn-block", type="submit") Login
+						button(id='signup',class="btn btn-lg btn-info btn-block", type="submit") Create Account
+					div.passwordLink(style="text-align:center;")
+						a(href='/enteremail') I forgot my password.

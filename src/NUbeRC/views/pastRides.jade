@@ -1,0 +1,261 @@
+extends layout
+
+block content
+  div(class="container")
+
+      meta(charset='utf-8')
+      title pastRides
+      script(src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js")
+      link(rel='stylesheet', href='//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css')
+      script(src='//code.jquery.com/ui/1.11.4/jquery-ui.js')
+
+      script(src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.3/backbone-min.js")
+      script(type="text/javascript" src="/javascripts/pastRidesView.js")
+      script(type="text/javascript" src="/javascripts/modalEvents.js")
+      script.
+        $(function() {
+        $( ".datepicker" ).datepicker();
+        });
+      script( type="text/javascript").
+        window.addEventListener('load', app.initialize);
+
+    div.div1
+      button.btn.btn-primary.btn-lg(type='button', data-toggle='modal', data-target='#postModal', id='postRide',style="margin-bottom:20%;")
+        | Post A Ride
+      // Modal
+      #postModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='postRideLabel')
+        .modal-dialog(role='document')
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+
+              p.dynamicHeader#headerStart Start
+              p.dynamicHeader &nbsp;
+              span.glyphicon.glyphicon-arrow-right
+              p.dynamicHeader &nbsp;
+              p.dynamicHeader#headerDest Destination
+
+              h4#myModalLabel.modal-title
+            .modal-body
+              form.form-inline(class="form-horizontal")
+                .control-group
+                  label.control-label(for='inputStart') Where is the Adventure Van coming from?
+                  .controls
+                    input#inputStart(type="text", placeholder="Starting point", data-trigger="manual", data-toggle='popover', data-content="Required field.")
+                .control-group
+                  label.control-label(for='inputDest') Where is it going?
+                  .controls
+                    input#inputDest(type="text", placeholder="Destination", data-trigger="manual", data-toggle='popover', data-content="Required field.")
+                .control-group
+                  label.control-label(for='inputPrice') What are you asking for (Food, Dollars, Company...)?
+                  .controls
+                    input#askPrice(type="text", placeholder="Compensation", data-trigger="manual", data-toggle='popover', data-content="Required field.")
+                .control-group
+                  label.control-label(for='inputSeats') How many adventure cadets can you take?
+                  .controls
+                    input#inputSeats(type="number", min='0', step='1' placeholder="Number of seats", data-trigger="manual", data-toggle='popover', data-content="Required field.")
+                .control-group
+                  label.control-label(for='inputLeave') Liftoff day?
+                  .controls
+                    input.datepicker#inputLeave(type="text", data-trigger="manual", data-toggle='popover', data-content="Required field.")
+                .control-group
+                  label.control-label(for='inputLeaveTime') Liftoff time?
+                  .controls
+                    input#inputLeaveTime(type="time", data-trigger="manual", data-toggle='popover', data-content="Required field.")
+                .control-group
+                  label.control-label(for='inputArrive') Arrival day (if different from departure time)?
+                  .controls
+                    input.datepicker#inputArrive(type="text", data-trigger="manual", data-toggle='popover', data-content="Required field.")
+                    input#invalidArrival(type="text", data-trigger="manual", data-toggle='popover', data-content="Invalid arrival date/time.", style="width:0px; visibility:hidden")
+                .control-group
+                  label.control-label(for='inputArriveTime') ETA?
+                  .controls
+                    input#inputArriveTime(type="time", data-trigger="manual", data-toggle='popover', data-content="Required field.")
+                .control-group
+                  label.control-label(for='inputCheck') Will you be returning?
+                  .controls
+                    input#inputCheck(type='checkbox')
+            .modal-header.hidden#returnTripForm
+              p.dynamicHeader#headerStart2 Start
+              p.dynamicHeader &nbsp;
+              span.glyphicon.glyphicon-arrow-right
+              p.dynamicHeader &nbsp;
+              p.dynamicHeader#headerDest2 Destination
+              .modal-body
+                .control-group
+                    label.control-label(for='inputSeatsReturn') How many adventure cadets can you return with?
+                    .controls
+                      input#inputSeatsReturn(type="number", min='0', step='1' placeholder="Number of seats", data-trigger="manual", data-toggle='popover', data-content="Required field.")
+                .control-group
+                  label.control-label(for='returnPrice') What are you asking for (Food, Dollars, Company...)?
+                  .controls
+                    input#returnPrice(type="text", placeholder="Compensation", data-trigger="manual", data-toggle='popover', data-content="Required field.")
+                  .control-group
+                    label.control-label(for='inputLeaveReturn') Liftoff day for return?
+                    .controls
+                      input.datepicker#inputLeaveReturn(type="text", data-trigger="manual", data-toggle='popover', data-content="Required field.")
+                      input#invalidReturnDeparture(type="text", data-trigger="manual", data-toggle='popover', data-content="Invalid departure date/time.", style="width:0px; visibility:hidden;")
+                  .control-group
+                    label.control-label(for='inputLeaveTimeReturn') Liftoff time?
+                    .controls
+                      input#inputLeaveTimeReturn(type="time", data-trigger="manual", data-toggle='popover', data-content="Required field.")
+                  .control-group
+                    label.control-label(for='inputArriveReturn') Arrival day for return (if different from departure time)?
+                    .controls
+                      input.datepicker#inputArriveReturn(type="text", data-trigger="manual", data-toggle='popover', data-content="Required field.")
+                      input#invalidReturnArrival(type="text", data-trigger="manual", data-toggle='popover', data-content="Invalid arrival date/time.", style="width:0px; visibility:hidden;")
+                  .control-group
+                    label.control-label(for='inputArriveTimeReturn') ETA for return?
+                    .controls
+                      input#inputArriveTimeReturn(type="time", data-trigger="manual", data-toggle='popover', data-content="Required field.")
+
+            .modal-footer
+              button.btn.btn-default(type='button', data-dismiss='modal') Close
+              button#postRideButton.btn.btn-primary(type='button') Post Ride
+
+
+
+
+    div(class="container_fluid" id= 'bigPapa')
+      #accordionTwo.panel-group
+        .panel.panel-default.boxerA
+          .panel-heading
+            h4.panel-title
+              a.accordion-toggle(data-toggle='collapse', data-parent='#accordionTwo', href='#drivesVis2') My Drives
+          #drivesVis2.panel-collapse.collapse.in
+            .list-group
+
+              div.list-group(id = "myDriveContainer")
+                script#DriveTemplate(type='text/template')
+                  div.listB
+                    button.list-group-item(type='button').
+                      To: <%=   destination %> From: <%= source %>
+
+              script#DriveTemplate_Detailed(type='text/template')
+                div.listB
+                  div.list-group-item(class='panel panel-info', id = 'testingID')
+                    div(class="panel-heading")
+                      h3(class="panel-title")
+                        p(style="float:left;")
+                          strong To:&nbsp
+                          | <%=   destination %>&nbsp
+                          br
+                          strong From:&nbsp
+                          | <%= source %>
+
+                        div(align="right")
+                          button(type="button", id="confirmed_button", class="btn btn-md btn-default2", data-toggle='modal', data-target='#confirmRidersModal') Rate Riders
+                          ul.lefty
+                            strong Potential Riders:&nbsp
+                            | <%=   potential_riders.length %>&nbsp
+                            br
+                            strong Number of Seats:&nbsp
+                            | <%= number_of_seats %>
+
+                    div(class="panel-body")
+                      p Departure Time: <%= departure_time %> Arrival Time: <%=arrival_time %>
+                      p Asking Price: <%= asking_price %>
+
+          .panel-heading
+            h8.panel-title
+              a.accordion-toggle(data-toggle='collapse', data-parent='#accordionTwo', href='#ridesVis') My Confirmed Rides
+          #ridesVis.panel-collapse.collapse
+            .list-group
+
+              div.list-group(id = "myConfirmedRideContainer")
+                script#RideTemplate(type='text/template')
+                  div.listB
+                    button.list-group-item(type='button').
+                      Driver: <%= driver %>  To: <%=   destination %> From: <%= source %>
+
+                script#RideTemplate_Detailed(type='text/template')
+                  div.listB
+                    div.list-group-item(class='panel panel-primary', id = 'testingID', style="opacity:0.9")
+                      div(class="panel-heading")
+                        h3(class="panel-title")
+                          p(style="float:left;")
+                            strong To:&nbsp
+                            | <%=   destination %>&nbsp
+                            br
+                            strong From:&nbsp
+                            | <%= source %>
+                          p(style="float:right;")
+                            strong Driver:&nbsp
+                            | <%= driver %>&nbsp
+
+                          div(align="right")
+                            button(type="button",id="bid_button", class="btn btn-md btn-default", data-toggle='modal', data-target='#cancelModal') Cancel Ride
+
+                      div(class="panel-body")
+                        p Departure Time: <%= departure_time %> Arrival Time: <%=arrival_time %>
+                        p Asking Price: <%= asking_price %>
+
+
+
+
+
+
+    #cancelModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='cancelRideLabel')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+            h4#myModalLabel.modal-title Are you sure you want to cancel this ride?
+          .modal-body
+            | Clicking "Cancel Ride" will remove this ride from My Rides and remove you from the rider list.
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            button.btn.btn-primary(type='button' id='cancelRideButton') Cancel Ride
+
+    #cancelDriveModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='cancelDriveLabel')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+            h4#myModalLabel.modal-title Are you sure you want to cancel this drive?
+          .modal-body
+            | Clicking "Cancel Drive" will remove this drive from the ride postings and your drives, and will notify your riders of this cancellation.
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            button.btn.btn-primary(type='button' id='cancelDriveButton') Cancel Drive
+
+    #bidModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='bidRideLabel')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+            h4#myModalLabel.modal-title I want in on this Adventure Van...
+          .modal-body
+            | I hope there's candy.
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            button.btn.btn-primary(type='button') Confirm
+
+    #acceptModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='acceptRideLabel')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+            h4#myModalLabel.modal-title People who have bid on my ride:
+            h5#seatNum
+          .modal-body
+            div#bidderList
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+    #confirmRidersModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='confirmRidersLabel')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+            h4#myModalLabel.modal-title People who have bid on my ride:
+            h5#seatNum
+          .modal-body
+            div#bidderList_confirmed
+          .modal-footer
+            button.btn.btn-default2(type='button', data-dismiss='modal') Close

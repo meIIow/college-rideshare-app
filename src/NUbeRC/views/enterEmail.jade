@@ -1,0 +1,17 @@
+extends loginLayout
+
+block content
+
+	title Enter Email
+	div(class="container", style="opacity:.95;")
+		script(src="/javascripts/sendForgotEmail.js")
+		div(class="container login-form" id="login_div")
+			form(id='loginform' class="form-signin" style="opacity:0.95;")
+				section
+					p.
+						Please enter your email address.
+					div.textbox
+						label(for="inputEmail" class="sr-only") Email Address
+						input(type="email",id='inputEmail', class="form-control", placeholder='Email',required, autofocus,data-trigger="manual", data-toggle='popover', data-content="you must use an email ending in .edu")
+					div.loginbuttons
+						button(id='enterEmail', class="btn btn-lg btn-primary btn-block", type="submit") Submit
